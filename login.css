@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    background-color: #121212;
+    border-radius: 8px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    background-color: #282828;
+    border: 1px solid #535353;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #1ed760;
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #535353;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.btn-signup {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #535353;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-signup:hover {
+    border-color: #fff;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}

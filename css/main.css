@@ -500,3 +500,167 @@ header {
 ::-webkit-scrollbar-thumb:hover {
     background: #686868;
 }
+
+/* Dropdown styles */
+.user-profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #282828;
+    border-radius: 4px;
+    padding: 8px;
+    min-width: 120px;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background-color: #383838;
+    border-radius: 2px;
+}
+
+/* Player Styles */
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #181818;
+    border-top: 1px solid #282828;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 16px;
+    align-items: center;
+    z-index: 100;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 300px;
+}
+
+.song-info img {
+    width: 56px;
+    height: 56px;
+}
+
+.song-details {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.song-details h4 {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-details p {
+    font-size: 12px;
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.controls i {
+    font-size: 16px;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+.controls i:hover {
+    color: #fff;
+}
+
+.controls i.fa-pause-circle {
+    font-size: 32px;
+    color: #fff;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.time {
+    font-size: 12px;
+    color: #b3b3b3;
+    min-width: 40px;
+}
+
+.progress-container {
+    flex-grow: 1;
+    height: 4px;
+    background-color: #535353;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background-color: #b3b3b3;
+    border-radius: 2px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.volume-bar {
+    width: 100px;
+    height: 4px;
+    background-color: #535353;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.volume-progress {
+    height: 100%;
+    width: 70%;
+    background-color: #b3b3b3;
+    border-radius: 2px;
+}
+

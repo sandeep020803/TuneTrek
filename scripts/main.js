@@ -1,4 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // ==================== AUTHENTICATION SECTION ====================
+    // Check if user is logged in
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser && !window.location.pathname.includes('login.html') && !window.location.pathname.includes('signup.html')) {
+        window.location.href = 'login.html';
+        return; // Stop execution if redirecting to login
+    }
+
+    // Update user profile in the header
+    if (currentUser) {
+        const userProfile = document.querySelector('.user-profile');
+        if (userProfile) {
+            userProfile.querySelector('img').src = currentUser.profilePic || 'assets/images/profile.jpg';
+            const usernameSpan = userProfile.querySelector('span');
+            if (usernameSpan) {
+                usernameSpan.textContent = currentUser.username || 'User';
+            }
+        }
+    }
+
+    // Logout functionality
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        });
+    }
+
+    // ==================== MUSIC PLAYER SECTION ====================
     // DOM Elements
     const audioPlayer = document.getElementById('audio-player');
     const playPauseBtn = document.querySelector('.fa-pause-circle');
@@ -36,6 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
             artist: 'The Weeknd, Daft Punk',
             cover: 'assets/images/cover3.jpg',
             audio: 'assets/audio/song3.mp3'
+        },
+        {
+            title: 'Sajni Re',
+            artist: 'Arijit Singh',
+            cover: 'assets/images/cover4.jpeg',
+            audio: 'assets/audio/song4.mp3'
+        },
+        {
+            title: 'Chool lo',
+            artist: 'The Local Train',
+            cover: 'assets/images/cover5.jpeg',
+            audio: 'assets/audio/song5.mp3'
         }
     ];
     
@@ -194,4 +237,89 @@ document.addEventListener('DOMContentLoaded', function() {
             playSong();
         });
     });
+
+    // ==================== SIDEBAR NAVIGATION SECTION ====================
+    // Sidebar navigation functionality
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            navItems.forEach(navItem => {
+                navItem.classList.remove('active');
+            });
+            
+            // Add active class to clicked item
+            this.classList.add('active');
+            
+            // Get the section name
+            const section = this.querySelector('span').textContent.trim();
+            
+            // Show/hide sections based on selection
+            const sections = document.querySelectorAll('.content > section');
+            sections.forEach(sec => {
+                sec.style.display = 'none';
+            });
+            
+            if (section === 'Home') {
+                document.querySelector('.greeting').style.display = 'block';
+                document.querySelector('.recently-played').style.display = 'block';
+            } else if (section === 'Search') {
+                const searchSection = document.createElement('section');
+                searchSection.className = 'search-section';
+                searchSection.innerHTML = `
+                    <h2>Search</h2>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="What do you want to listen to?">
+                    </div>
+                    <div class="search-results">
+                        <!-- Search results would go here -->
+                    </div>
+                `;
+                document.querySelector('.content').appendChild(searchSection);
+                searchSection.style.display = 'block';
+            } else if (section === 'Your Library') {
+                const librarySection = document.createElement('section');
+                librarySection.className = 'library-section';
+                librarySection.innerHTML = `
+                    <h2>Your Library</h2>
+                    <div class="library-content">
+                        <p>Your saved songs and playlists will appear here</p>
+                    </div>
+                `;
+                document.querySelector('.content').appendChild(librarySection);
+                librarySection.style.display = 'block';
+            }
+        });
+    });
+
+    // Playlist creation functionality
+    const createPlaylist = document.querySelector('.create-playlist');
+    if (createPlaylist) {
+        createPlaylist.addEventListener('click', function() {
+            const playlistName = prompt('Enter playlist name:');
+            if (playlistName) {
+                const playlists = JSON.parse(localStorage.getItem('playlists')) || [];
+                playlists.push({
+                    name: playlistName,
+                    songs: []
+                });
+                localStorage.setItem('playlists', JSON.stringify(playlists));
+                
+                // Update the UI
+                const playlistList = document.querySelector('.user-playlists ul');
+                const newPlaylist = document.createElement('li');
+                newPlaylist.textContent = playlistName;
+                playlistList.appendChild(newPlaylist);
+            }
+        });
+    }
+
+    // Liked songs functionality
+    const likedSongs = document.querySelector('.liked-songs');
+    if (likedSongs) {
+        likedSongs.addEventListener('click', function() {
+            alert('Showing your liked songs');
+        });
+    }
 });

@@ -64,10 +64,20 @@
                     <i class="fas fa-chevron-left"></i>
                     <i class="fas fa-chevron-right"></i>
                 </div>
-                <div class="user-profile">
+                <!-- <div class="user-profile">
                     <img src="assets/images/profile.jpg" alt="Profile">
                     <span>John Doe</span>
                     <i class="fas fa-caret-down"></i>
+                </div> -->
+                <!-- In your header section -->
+<div class="user-profile" id="user-profile">
+    <img src="assets/images/profile.jpg" alt="Profile">
+    <span id="username-display">John Doe</span>
+    <i class="fas fa-caret-down"></i>
+    <div class="dropdown-menu">
+        <a href="#" id="logout-btn">Log out</a>
+    </div>
+</div>
                 </div>
             </header>
             
@@ -162,6 +172,42 @@
     </div>
     
     <audio id="audio-player" src="assets/audio/song1.mp3"></audio>
+
+    <!-- Player
+<div class="player">
+    <div class="song-info">
+        <img src="assets/images/cover1.jpg" alt="Album Cover">
+        <div class="song-details">
+            <h4>Song Title</h4>
+            <p>Artist Name</p>
+        </div>
+        <i class="far fa-heart"></i>
+    </div> -->
+    
+    <div class="player-controls">
+        <div class="controls">
+            <i class="fas fa-random"></i>
+            <i class="fas fa-step-backward"></i>
+            <i class="fas fa-pause-circle"></i>
+            <i class="fas fa-step-forward"></i>
+            <i class="fas fa-redo"></i>
+        </div>
+        <div class="progress-bar">
+            <span class="time">0:00</span>
+            <div class="progress-container">
+                <div class="progress"></div>
+            </div>
+            <span class="time">3:45</span>
+        </div>
+    </div>
+    
+    <div class="volume-control">
+        <i class="fas fa-volume-up"></i>
+        <div class="volume-bar">
+            <div class="volume-progress"></div>
+        </div>
+    </div>
+</div>
     
     <script src="scripts/main.js"></script>
 </body>
